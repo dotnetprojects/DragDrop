@@ -17,14 +17,14 @@
                              >
 
                         <!-- The content ghost that remains when dragging (typically a usercontrol) -->
-                        <ContentPresenter x:Name="GhostContentControl" 
+                        <ContentPresenter x:Name="GhostContentControl" Canvas.Left="0" Canvas.Top="0"
                               Content="{TemplateBinding Ghost}"   
                               Visibility="{TemplateBinding GhostVisibility}"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
                         <!-- The draggable control with draghandle (DragBar) -->
-                        <Grid x:Name="MainDraggableControl" 
+                        <Grid x:Name="MainDraggableControl" Canvas.Left="0" Canvas.Top="0"
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               >

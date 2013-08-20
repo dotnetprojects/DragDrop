@@ -322,12 +322,18 @@ namespace DragDropLibrary
         internal Point internalOffset;
 
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
+#if !SILVERLIGHT
+        static DropTarget()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DropTarget), new FrameworkPropertyMetadata(typeof(DropTarget)));            
+        }
+#endif
+
         public DropTarget()
         {
+#if SILVERLIGHT
             this.DefaultStyleKey = typeof(DropTarget);
+#endif
 
             // default values
             DragSourceIsHovering = false;

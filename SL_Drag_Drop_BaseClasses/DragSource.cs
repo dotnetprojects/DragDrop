@@ -21,6 +21,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -392,12 +393,18 @@ namespace DragDropLibrary
         private FrameworkElement DragBar;
         private FrameworkElement MainContentPresenter;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
+#if !SILVERLIGHT
+        static DragSource()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DragSource), new FrameworkPropertyMetadata(typeof(DragSource)));            
+        }
+#endif
+
         public DragSource()
         {
+#if SILVERLIGHT
             this.DefaultStyleKey = typeof(DragSource);
+#endif
         }
 
 
@@ -700,7 +707,6 @@ namespace DragDropLibrary
             if (this.dragging)
             {
                 Point position = e.GetPosition(sender as UIElement);
-
 
                 currentCanvasPosition.X = Canvas.GetLeft(this.MainDraggableControl) + position.X - this.lastDragPosition.X;
                 currentCanvasPosition.Y = Canvas.GetTop(this.MainDraggableControl) + position.Y - this.lastDragPosition.Y;

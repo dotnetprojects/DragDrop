@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BDF60965-CA46-4387-82F7-BF55DA6024C1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPF_Example</RootNamespace>
+    <AssemblyName>WPF_Example</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="..\SL_Drag_Drop\DragSourceContent.xaml">
+      <Link>DragSourceContent.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\DragSourceGhost.xaml">
+      <Link>DragSourceGhost.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\DropTargetContent.xaml">
+      <Link>DropTargetContent.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\DropTargetGhost.xaml">
+      <Link>DropTargetGhost.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop0.xaml">
+      <Link>sucDragDrop0.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop1.xaml">
+      <Link>sucDragDrop1.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop2.xaml">
+      <Link>sucDragDrop2.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop3.xaml">
+      <Link>sucDragDrop3.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop4.xaml">
+      <Link>sucDragDrop4.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\SL_Drag_Drop\DragSourceContent.xaml.cs">
+      <Link>DragSourceContent.xaml.cs</Link>
+      <DependentUpon>DragSourceContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\DragSourceGhost.xaml.cs">
+      <Link>DragSourceGhost.xaml.cs</Link>
+      <DependentUpon>DragSourceGhost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\DropTargetContent.xaml.cs">
+      <Link>DropTargetContent.xaml.cs</Link>
+      <DependentUpon>DropTargetContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\DropTargetGhost.xaml.cs">
+      <Link>DropTargetGhost.xaml.cs</Link>
+      <DependentUpon>DropTargetGhost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\Dummy.cs">
+      <Link>Dummy.cs</Link>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop0.xaml.cs">
+      <Link>sucDragDrop0.xaml.cs</Link>
+      <DependentUpon>sucDragDrop0.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop1.xaml.cs">
+      <Link>sucDragDrop1.xaml.cs</Link>
+      <DependentUpon>sucDragDrop1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop2.xaml.cs">
+      <Link>sucDragDrop2.xaml.cs</Link>
+      <DependentUpon>sucDragDrop2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop3.xaml.cs">
+      <Link>sucDragDrop3.xaml.cs</Link>
+      <DependentUpon>sucDragDrop3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop4.xaml.cs">
+      <Link>sucDragDrop4.xaml.cs</Link>
+      <DependentUpon>sucDragDrop4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WPF_Drag_Drop\DragDropLibrary_WPF.csproj">
+      <Project>{40a9dbd2-2fcc-4553-9e66-d948103c20b2}</Project>
+      <Name>DragDropLibrary_WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
