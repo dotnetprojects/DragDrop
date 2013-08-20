@@ -98,6 +98,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="..\SL_Drag_Drop\sucDragDrop5.xaml">
+      <Link>sucDragDrop5.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,6 +145,10 @@
     <Compile Include="..\SL_Drag_Drop\sucDragDrop4.xaml.cs">
       <Link>sucDragDrop4.xaml.cs</Link>
       <DependentUpon>sucDragDrop4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\SL_Drag_Drop\sucDragDrop5.xaml.cs">
+      <Link>sucDragDrop5.xaml.cs</Link>
+      <DependentUpon>sucDragDrop5.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

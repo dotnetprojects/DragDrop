@@ -1,0 +1,25 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dragDropLibrary="clr-namespace:DragDropLibrary;assembly=DragDropLibrary"
+    xmlns:slDragDrop="clr-namespace:SL_Drag_Drop"    
+    mc:Ignorable="d" x:Class="SL_Drag_Drop.sucDragDrop5"
+    d:DesignWidth="599" d:DesignHeight="283" >
+    <Grid x:Name="LayoutRoot">
+        <dragDropLibrary:DropTarget>
+            <dragDropLibrary:DropTarget.Ghost>                
+                <slDragDrop:DropTargetGhost/>
+            </dragDropLibrary:DropTarget.Ghost>
+            <dragDropLibrary:DragSource>
+                <dragDropLibrary:DragSource.Ghost>
+                    <slDragDrop:DragSourceGhost />
+                </dragDropLibrary:DragSource.Ghost>
+                <slDragDrop:DragSourceContent>
+                    <slDragDrop:DragSourceContent.DataContext>
+                        <slDragDrop:Dummy DummyText="1" />
+                    </slDragDrop:DragSourceContent.DataContext>
+                </slDragDrop:DragSourceContent>
+            </dragDropLibrary:DragSource>
+        </dragDropLibrary:DropTarget>
+        </Grid>
+</UserControl>

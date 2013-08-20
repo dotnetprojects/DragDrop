@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
@@ -36,6 +37,7 @@ namespace DragDropLibrary
     /// <summary>
     /// Class defining a droptarget
     /// </summary>
+    [ContentProperty("Content")]
     public class DropTarget : Control, IDisposable
     {
 

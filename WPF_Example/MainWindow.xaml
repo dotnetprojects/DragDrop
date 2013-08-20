@@ -34,6 +34,8 @@
                     Margin="3"></Button>
                 <Button x:Name="btnExample4" Click="btnExample4_Click" Content="Behaviour, #4"
                     Margin="3"></Button>
+                <Button x:Name="btnExample5" Click="btnExample5_Click" Content="Example"
+                    Margin="3"></Button>
             </StackPanel>
 
 
