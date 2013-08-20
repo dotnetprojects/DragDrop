@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SL_Drag_Drop.Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:My="clr-namespace:SL_Drag_Drop">
+
+    
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+              <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+    			<GradientStop Color="#FFD7ECFF" Offset="0"/>
+    			<GradientStop Color="#FF6FA5DB" Offset="1"/>
+    		</LinearGradientBrush>
+        </Grid.Background>
+        
+         <Grid  Width="900" Height="600" HorizontalAlignment="Left" VerticalAlignment="Top">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="10">
+            <Button x:Name="btnExample0" Click="btnExample0_Click" Content="Behaviour, #0"
+                    Margin="3"></Button>
+            <Button x:Name="btnExample1" Click="btnExample1_Click" Content="Behaviour, #1"
+                    Margin="3"></Button>
+            <Button x:Name="btnExample2" Click="btnExample2_Click" Content="Behaviour, #2"
+                    Margin="3"></Button>
+            <Button x:Name="btnExample3" Click="btnExample3_Click" Content="Behaviour, #3"
+                    Margin="3"></Button>
+            <Button x:Name="btnExample4" Click="btnExample4_Click" Content="Behaviour, #4"
+                    Margin="3"></Button>
+        </StackPanel>
+        
+        
+        <Grid x:Name="grdWrapper" Grid.Row="1" Grid.Column="0">
+            <My:sucDragDrop0></My:sucDragDrop0>
+        </Grid>
+        
+    </Grid>
+    </Grid>
+    
+    
+   
+</UserControl>

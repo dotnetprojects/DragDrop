@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="SL_Drag_Drop.DragSourceContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    Width="100" Height="100">
+    <Grid x:Name="LayoutRoot" Background="#FFEEB99D" Margin="5">
+        <TextBlock TextWrapping="Wrap" FontSize="48" HorizontalAlignment="Right"
+                   Margin="5" Text="{Binding DummyText}">
+        	<TextBlock.Foreground>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#FF62B5E1"/>
+        			<GradientStop Color="#FF2152CB" Offset="1"/>
+        		</LinearGradientBrush>
+        	</TextBlock.Foreground>
+        </TextBlock>
+    </Grid>
+</UserControl>
