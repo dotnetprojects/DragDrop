@@ -505,7 +505,8 @@ namespace DragDropLibrary
 
                 if (isInDropTarget)
                 {
-                    DropTarget dropTarget = GetCorrectDropTarget();
+                    DropTarget dropTarget = GetCorrectDropTarget(e.GetPosition(this.MainDraggableControl));
+                    //DropTarget dropTarget = GetCorrectDropTarget();
 
                     if (dropTarget != null)
                     {
@@ -627,17 +628,17 @@ namespace DragDropLibrary
         /// <summary>
         /// Gets the currently hovered droptarget
         /// </summary>
-        private DropTarget GetCorrectDropTarget()
+        private DropTarget GetCorrectDropTarget(Point pt)
         {
             // get my absolute position
-            Point offsetMine = this.MainDraggableControl.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
+            Point offsetMine = this.MainDraggableControl.TransformToVisual(UIHelpers.RootUI).Transform(pt);
 
             if (AllDropTargetsValid)
             {
                 foreach (var item in InternalDropTargets)
                 {
                     // get the absolute position of this droptarget 
-                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
+                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(pt);
 
                     // check its bounds against my absolute position
                     if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + item.ActualWidth)
@@ -708,6 +709,7 @@ namespace DragDropLibrary
             {
                 Point position = e.GetPosition(sender as UIElement);
 
+                Debug.WriteLine(position.X);
                 currentCanvasPosition.X = Canvas.GetLeft(this.MainDraggableControl) + position.X - this.lastDragPosition.X;
                 currentCanvasPosition.Y = Canvas.GetTop(this.MainDraggableControl) + position.Y - this.lastDragPosition.Y;
 
@@ -718,8 +720,7 @@ namespace DragDropLibrary
                 // if the absolute position of the draggable element is inside of one of 
                 // the droptargets applying, fire the correct events
 
-                CheckIfIAmInDropTarget();
-
+                CheckIfIAmInDropTarget(e.GetPosition(this.MainDraggableControl));                 
 
                 // Fire the drag moved event
                 if (this.DragMoved != null)
@@ -728,7 +729,7 @@ namespace DragDropLibrary
                 }
 
                 // Update the last mouse position
-                this.lastDragPosition = e.GetPosition(sender as UIElement);
+                //this.lastDragPosition = e.GetPosition(sender as UIElement);
             }
         }
 
@@ -737,10 +738,13 @@ namespace DragDropLibrary
         /// Method to check if "I" am in one of my droptargets
         /// </summary>
         /// <returns></returns>
-        private void CheckIfIAmInDropTarget()
+        private void CheckIfIAmInDropTarget(Point position)
         {
             // get my absolute position
-            Point offsetMine = this.MainDraggableControl.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
+            Point offsetMine =
+                  this.MainDraggableControl
+                  .TransformToVisual(UIHelpers.RootUI)
+                  .Transform(position);
 
             isInDropTarget = false;
 
@@ -776,6 +780,16 @@ namespace DragDropLibrary
                             // fire event on droptarget
                             item.TriggerDropTargetEntered(this);
                             isInDropTarget = true;
+
+                            // Un-highight all other drop targets.
+                            foreach (var dropTarget in InternalDropTargets)
+                            {
+                                if (item != dropTarget)
+                                {
+                                    dropTarget.TriggerDropTargetLeft(this);
+                                }
+                            }
+
                             break;
                         }
                         else
@@ -813,6 +827,16 @@ namespace DragDropLibrary
                                 // fire event on droptarget
                                 item.TriggerDropTargetEntered(this);
                                 isInDropTarget = true;
+
+                                // Un-highight all other drop targets.
+                                foreach (var dropTarget in DropTargets)
+                                {
+                                    if (item != dropTarget)
+                                    {
+                                        dropTarget.TriggerDropTargetLeft(this);
+                                    }
+                                }
+
                                 break;
                             }
                             else
@@ -835,6 +859,8 @@ namespace DragDropLibrary
         {
             if (this.DraggingEnabled && !this.dragging)
             {
+                this.lastDragPosition = e.GetPosition(sender as UIElement);
+
                 // Fire the drag started event
                 if (this.BeforeDragStarted != null)
                 {
@@ -887,7 +913,7 @@ namespace DragDropLibrary
 
                 // Capture mouse & store position
                 ((FrameworkElement)sender).CaptureMouse();
-                this.lastDragPosition = e.GetPosition(sender as UIElement);
+                //this.lastDragPosition = e.GetPosition(sender as UIElement);
 
                 // Set dragging to true
                 this.dragging = true;
