@@ -22,7 +22,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using SL_Drag_Drop_BaseClasses;
+using DragDropLibrary;
 
 
 namespace SL_Drag_Drop
@@ -35,7 +35,7 @@ namespace SL_Drag_Drop
         {
             InitializeComponent();
 
-            SL_Drag_Drop_BaseClasses.InitialValues.ContainingLayoutPanel = this.LayoutRoot;
+            InitialValues.ContainingLayoutPanel = this.LayoutRoot;
         }
 
         private void btnExample1_Click(object sender, RoutedEventArgs e)

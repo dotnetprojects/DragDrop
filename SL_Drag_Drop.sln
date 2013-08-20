@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL_Drag_Drop", "SL_Drag_Drop\SL_Drag_Drop.csproj", "{174CDB61-98A1-4771-9178-7A44A4674BB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL_Drag_Drop.Web", "SL_Drag_Drop.Web\SL_Drag_Drop.Web.csproj", "{86BAB6E0-A792-424B-869C-B3B1B3FC2A19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragDropLibrary_SL", "SL_Drag_Drop_BaseClasses\DragDropLibrary_SL.csproj", "{912977D5-0889-4433-9C63-A37B01411EBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL_Drag_Drop_BaseClasses", "SL_Drag_Drop_BaseClasses\SL_Drag_Drop_BaseClasses.csproj", "{912977D5-0889-4433-9C63-A37B01411EBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragDropLibrary_WPF", "WPF_Drag_Drop\DragDropLibrary_WPF.csproj", "{40A9DBD2-2FCC-4553-9E66-D948103C20B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Drag_Drop", "WPF_Drag_Drop\WPF_Drag_Drop.csproj", "{40A9DBD2-2FCC-4553-9E66-D948103C20B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_Example", "WPF_Example\WPF_Example.csproj", "{BDF60965-CA46-4387-82F7-BF55DA6024C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		{174CDB61-98A1-4771-9178-7A44A4674BB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174CDB61-98A1-4771-9178-7A44A4674BB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174CDB61-98A1-4771-9178-7A44A4674BB1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86BAB6E0-A792-424B-869C-B3B1B3FC2A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86BAB6E0-A792-424B-869C-B3B1B3FC2A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86BAB6E0-A792-424B-869C-B3B1B3FC2A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86BAB6E0-A792-424B-869C-B3B1B3FC2A19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{912977D5-0889-4433-9C63-A37B01411EBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{912977D5-0889-4433-9C63-A37B01411EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{912977D5-0889-4433-9C63-A37B01411EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +27,10 @@ Global
 		{40A9DBD2-2FCC-4553-9E66-D948103C20B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40A9DBD2-2FCC-4553-9E66-D948103C20B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40A9DBD2-2FCC-4553-9E66-D948103C20B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDF60965-CA46-4387-82F7-BF55DA6024C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDF60965-CA46-4387-82F7-BF55DA6024C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDF60965-CA46-4387-82F7-BF55DA6024C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDF60965-CA46-4387-82F7-BF55DA6024C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

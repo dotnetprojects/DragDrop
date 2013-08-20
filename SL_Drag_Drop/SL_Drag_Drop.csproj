@@ -182,9 +182,9 @@
     <None Include="Properties\AppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SL_Drag_Drop_BaseClasses\SL_Drag_Drop_BaseClasses.csproj">
+    <ProjectReference Include="..\SL_Drag_Drop_BaseClasses\DragDropLibrary_SL.csproj">
       <Project>{912977D5-0889-4433-9C63-A37B01411EBC}</Project>
-      <Name>SL_Drag_Drop_BaseClasses</Name>
+      <Name>DragDropLibrary_SL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

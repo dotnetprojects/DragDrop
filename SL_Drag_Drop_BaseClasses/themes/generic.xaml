@@ -1,17 +1,17 @@
 ﻿<ResourceDictionary
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"    
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:local="clr-namespace:SL_Drag_Drop_BaseClasses">
+  xmlns:dragDropLibrary="clr-namespace:DragDropLibrary">
 
     <!-- Template for dragsource  -->
 
-    <Style TargetType="local:DragSource">
+    <Style TargetType="dragDropLibrary:DragSource">
         <Setter Property="Background" Value="#ffffffff"></Setter>
         <Setter Property="BorderBrush" Value="#ff999999"></Setter>
         <Setter Property="BorderThickness" Value="1"></Setter>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:DragSource">
+                <ControlTemplate TargetType="dragDropLibrary:DragSource">
                     <Canvas x:Name="MainControlHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalAlignment}"
                              >
@@ -70,7 +70,7 @@
 
 
     <!-- Template for DropTarget  -->
-    <Style TargetType="local:DropTarget">
+    <Style TargetType="dragDropLibrary:DropTarget">
         <Setter Property="DropBorderBrush">
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -84,7 +84,7 @@
         <Setter Property="DropBorderCornerRadius" Value="3,3,3,3"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="local:DropTarget">
+                <ControlTemplate TargetType="dragDropLibrary:DropTarget">
                     <Grid x:Name="MainControlHost"
                           HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalAlignment}">

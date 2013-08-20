@@ -9,19 +9,13 @@
 
 
 using System;
-using System.Net;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Reflection;
-using System.Collections.Generic;
 
-namespace SL_Drag_Drop_BaseClasses
+namespace DragDropLibrary
 {
     /// <summary>
     /// Enumeration containing the possible drop behaviours on element removal
@@ -350,7 +344,7 @@ namespace SL_Drag_Drop_BaseClasses
         {
             try
             {
-                internalOffset = this.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+                internalOffset = this.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
                 return true;
             }
             catch (Exception)
@@ -414,7 +408,7 @@ namespace SL_Drag_Drop_BaseClasses
 
             if (AllowPositionSave)
             {
-                (Application.Current.RootVisual as FrameworkElement).SizeChanged += new SizeChangedEventHandler(DropTarget_SizeChanged);
+                (UIHelpers.RootUI).SizeChanged += new SizeChangedEventHandler(DropTarget_SizeChanged);
             }
 
         }
@@ -792,7 +786,7 @@ namespace SL_Drag_Drop_BaseClasses
 
                 //if (AllowPositionSave)
                 //{
-                    (Application.Current.RootVisual as FrameworkElement).SizeChanged -= new SizeChangedEventHandler(DropTarget_SizeChanged);
+                (UIHelpers.RootUI).SizeChanged -= new SizeChangedEventHandler(DropTarget_SizeChanged);
                 //}
 
             }

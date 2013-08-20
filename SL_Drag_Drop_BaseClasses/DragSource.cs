@@ -20,20 +20,15 @@
 
 
 using System;
-using System.Net;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Windows.Controls.Primitives;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace SL_Drag_Drop_BaseClasses
+namespace DragDropLibrary
 {
     /// <summary>
     /// Class defining a drag source
@@ -628,14 +623,14 @@ namespace SL_Drag_Drop_BaseClasses
         private DropTarget GetCorrectDropTarget()
         {
             // get my absolute position
-            Point offsetMine = this.MainDraggableControl.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+            Point offsetMine = this.MainDraggableControl.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
             if (AllDropTargetsValid)
             {
                 foreach (var item in InternalDropTargets)
                 {
                     // get the absolute position of this droptarget 
-                    Point offsetDrop = item.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
                     // check its bounds against my absolute position
                     if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + item.ActualWidth)
@@ -654,7 +649,7 @@ namespace SL_Drag_Drop_BaseClasses
                 foreach (var item in DropTargets)
                 {
                     // get the absolute position of this droptarget 
-                    Point offsetDrop = item.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
                     // check its bounds against my absolute position
                     if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + item.ActualWidth)
@@ -739,7 +734,7 @@ namespace SL_Drag_Drop_BaseClasses
         private void CheckIfIAmInDropTarget()
         {
             // get my absolute position
-            Point offsetMine = this.MainDraggableControl.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+            Point offsetMine = this.MainDraggableControl.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
             isInDropTarget = false;
 
@@ -799,7 +794,7 @@ namespace SL_Drag_Drop_BaseClasses
                     foreach (var item in DropTargets)
                     {
                         // get the absolute position of this droptarget 
-                        Point offsetDrop = item.TransformToVisual(Application.Current.RootVisual as UIElement).Transform(new Point(0, 0));
+                        Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
                         // check its bounds against my absolute position
 
@@ -851,7 +846,7 @@ namespace SL_Drag_Drop_BaseClasses
 
                 if (AllDropTargetsValid)
                 {
-                    var dropTargets = GetChildsRecursive(Application.Current.RootVisual).OfType<DropTarget>().ToList();
+                    var dropTargets = GetChildsRecursive(UIHelpers.RootUI).OfType<DropTarget>().ToList();
                     this.InternalDropTargets = dropTargets;
                 }
 
