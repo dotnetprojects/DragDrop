@@ -6,11 +6,18 @@
     mc:Ignorable="d" x:Class="SL_Drag_Drop.sucDragDrop5"
     d:DesignWidth="599" d:DesignHeight="283" >
     <Grid x:Name="LayoutRoot">
-        <dragDropLibrary:DropTarget>
-            <dragDropLibrary:DropTarget.Ghost>                
+        <dragDropLibrary:DropTarget Width="100" Height="100" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <dragDropLibrary:DropTarget.Ghost>
                 <slDragDrop:DropTargetGhost/>
             </dragDropLibrary:DropTarget.Ghost>
-            <dragDropLibrary:DragSource>
+            <Rectangle Fill="LightBlue" />
+        </dragDropLibrary:DropTarget >
+
+        <dragDropLibrary:DropTarget Width="100" Height="100">
+            <dragDropLibrary:DropTarget.Ghost>
+                <slDragDrop:DropTargetGhost/>
+            </dragDropLibrary:DropTarget.Ghost>
+            <dragDropLibrary:DragSource AllDropTargetsValid="True">
                 <dragDropLibrary:DragSource.Ghost>
                     <slDragDrop:DragSourceGhost />
                 </dragDropLibrary:DragSource.Ghost>
@@ -21,5 +28,5 @@
                 </slDragDrop:DragSourceContent>
             </dragDropLibrary:DragSource>
         </dragDropLibrary:DropTarget>
-        </Grid>
+    </Grid>
 </UserControl>

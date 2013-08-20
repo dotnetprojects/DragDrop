@@ -495,6 +495,8 @@ namespace DragDropLibrary
         {
             if (this.DraggingEnabled && this.dragging)
             {
+                e.Handled = true;
+
                 // Capture the mouse
                 ((FrameworkElement)sender).ReleaseMouseCapture();
 
@@ -709,7 +711,6 @@ namespace DragDropLibrary
             {
                 Point position = e.GetPosition(sender as UIElement);
 
-                Debug.WriteLine(position.X);
                 currentCanvasPosition.X = Canvas.GetLeft(this.MainDraggableControl) + position.X - this.lastDragPosition.X;
                 currentCanvasPosition.Y = Canvas.GetTop(this.MainDraggableControl) + position.Y - this.lastDragPosition.Y;
 
@@ -856,9 +857,11 @@ namespace DragDropLibrary
         }
 
         void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+        {            
             if (this.DraggingEnabled && !this.dragging)
             {
+                e.Handled = true;
+
                 this.lastDragPosition = e.GetPosition(sender as UIElement);
 
                 // Fire the drag started event

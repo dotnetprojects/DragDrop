@@ -145,7 +145,7 @@ namespace DragDropLibrary
         /// <summary>
         /// Contains the content control for a dragtarget
         /// </summary>
-        public DragSource Content
+        public UIElement Content
         {
             get
             {
@@ -189,10 +189,13 @@ namespace DragDropLibrary
                         plstContent.Children.Add(value);
                     }
 
-                    if (value.DropTargets == null)
+                    if (value is DragSource)
                     {
-                        value.DropTargets = new List<DropTarget>();
-                        value.DropTargets.Add(this);
+                        if (((DragSource)value).DropTargets == null)
+                        {
+                            ((DragSource)value).DropTargets = new List<DropTarget>();
+                            ((DragSource)value).DropTargets.Add(this);
+                        }
                     }
                 }
             }
@@ -383,7 +386,7 @@ namespace DragDropLibrary
             // add the content
             if (plstContent.Children.Count > 0)
             {
-                DragSource tmp = (DragSource)plstContent.Children[0];
+                var tmp = plstContent.Children[0];
                 plstContent.Children.Remove(tmp);
 
                 Content = tmp;
@@ -474,7 +477,7 @@ namespace DragDropLibrary
                 // is a valid droptarget for the current child - so it must have rights to 
                 // be used as a droptarget to be able to make the switch!) or replace it
 
-                DragSource currentChild = (DragSource)MainContentControl.Children[0];
+                var currentChild = MainContentControl.Children[0];
 
                 // if currentchild <> child you're dragging (else, we're just dropping our
                 // dragsource onto its own parent (droptarget)
@@ -488,9 +491,10 @@ namespace DragDropLibrary
                         // droptarget?
                         if (VisualTreeHelper.GetParent(firstParent) is DropTarget)
                         {
+                            var currentDragSourceChild = currentChild as DragSource;
+
                             DropTarget newChildParentDropTarget = (DropTarget)VisualTreeHelper.GetParent(firstParent);
-                            if (currentChild.DropTargets.Contains(newChildParentDropTarget)
-                                || currentChild.AllDropTargetsValid == true) // check for valid droptarget, or check if all droptargets are valid
+                            if (currentDragSourceChild != null && (currentDragSourceChild.DropTargets.Contains(newChildParentDropTarget) || currentDragSourceChild.AllDropTargetsValid)) // check for valid droptarget, or check if all droptargets are valid
                             {
 
 
@@ -499,9 +503,9 @@ namespace DragDropLibrary
                                 from = args.DragSource.getCurrentPosition();
 
                                 Point offsetCurrentChild = new Point();
-                                if (currentChild.ShowSwitchReplaceAnimation)
+                                if (currentDragSourceChild.ShowSwitchReplaceAnimation)
                                 {
-                                    offsetCurrentChild = currentChild.MainDraggableControl.TransformToVisual(InitialValues.ContainingLayoutPanel).Transform(new Point(0, 0));
+                                    offsetCurrentChild = currentDragSourceChild.MainDraggableControl.TransformToVisual(InitialValues.ContainingLayoutPanel).Transform(new Point(0, 0));
                                 }
 
                                 Point oriOffset = new Point(args.DragSource.OriginalOffset.X, args.DragSource.OriginalOffset.Y);
@@ -520,7 +524,7 @@ namespace DragDropLibrary
                                
 
                                 // move the current child, with or without an animation
-                                if (currentChild.ShowSwitchReplaceAnimation)
+                                if (currentDragSourceChild.ShowSwitchReplaceAnimation)
                                 {
                                     // animation, from the current position to the new position
                                     // current position = where the new child is now
@@ -532,13 +536,13 @@ namespace DragDropLibrary
 
                                     //currentChild.AnimateOnSwitch(from);
 
-                                    Storyboard sb = currentChild.ReturnAnimateOnSwitch(offsetCurrentChild, oriOffset);
+                                    Storyboard sb = currentDragSourceChild.ReturnAnimateOnSwitch(offsetCurrentChild, oriOffset);
                                 
                                     EventHandler handler = null;
                                     handler = (send, arg) =>
                                     {
                                         sb.Completed -= handler;
-                                        currentChild.ResetMyPosition();
+                                        currentDragSourceChild.ResetMyPosition();
                                         // trigger external dragsourcedropped-event
                                         TriggerDragSourceDropped(args.DragSource);
                                     };
