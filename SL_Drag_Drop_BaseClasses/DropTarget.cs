@@ -38,6 +38,10 @@ namespace DragDropLibrary
     /// Class defining a droptarget
     /// </summary>
     [ContentProperty("Content")]
+    [TemplatePart(Name = "PART_MainControlHost")]
+    [TemplatePart(Name = "PART_GhostContentControl")]
+    [TemplatePart(Name = "PART_MainContentControl")]
+    [TemplatePart(Name = "PART_BoundingBorder")]
     public class DropTarget : Control, IDisposable
     {
 
@@ -297,7 +301,7 @@ namespace DragDropLibrary
         private Grid MainControlHost;
         private Grid GhostContentControl;
         private Grid MainContentControl;
-        private Border BoundingBorder;
+        private DependencyObject BoundingBorder;
 
         internal bool PositionCalculated = false;
 
@@ -377,11 +381,11 @@ namespace DragDropLibrary
             // automatically resize.  We need to make sure the parent control is resized properly
 
             // get the main control host
-            MainControlHost = (Grid)this.GetTemplateChild("MainControlHost");
+            MainControlHost = (Grid)this.GetTemplateChild("PART_MainControlHost");
             // get the ghost control host
-            GhostContentControl = (Grid)this.GetTemplateChild("GhostContentControl");
+            GhostContentControl = (Grid)this.GetTemplateChild("PART_GhostContentControl");
             // get the main content host
-            MainContentControl = (Grid)this.GetTemplateChild("MainContentControl");
+            MainContentControl = (Grid)this.GetTemplateChild("PART_MainContentControl");
 
             // add the content
             if (plstContent.Children.Count > 0)
@@ -404,7 +408,7 @@ namespace DragDropLibrary
             }
 
             // get bounding border for hover-effects
-            BoundingBorder = (Border)this.GetTemplateChild("BoundingBorder");
+            BoundingBorder = this.GetTemplateChild("PART_BoundingBorder");
 
             // add handler for droptargetentered
             DropTargetEntered += new DropEventHandler(DropTargetBase_DropTargetEntered);

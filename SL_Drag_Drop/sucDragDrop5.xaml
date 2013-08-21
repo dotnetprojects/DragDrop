@@ -9,11 +9,14 @@
         <Grid.RenderTransform>
             <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
         </Grid.RenderTransform>
-        <dragDropLibrary:DropTarget Margin="400,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <dragDropLibrary:DropTarget GhostVisibility="Visible" Margin="246,360,0,-177" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <dragDropLibrary:DropTarget.Ghost>
+                <Rectangle Fill="Red" Width="100" Height="100"></Rectangle>
+            </dragDropLibrary:DropTarget.Ghost>
             <Rectangle Fill="Green" Width="100" Height="100" />
         </dragDropLibrary:DropTarget >
-       
-            <dragDropLibrary:DragSource DropMode="ReturnDragSourceWithoutAnimation" AllDropTargetsValid="True">
+
+        <dragDropLibrary:DragSource Width="100" Height="100" DropMode="ReturnDragSourceWithoutAnimation" AllDropTargetsValid="True" Margin="596,344,-97,-161">
                 <dragDropLibrary:DragSource.Ghost>
                     <slDragDrop:DragSourceGhost />
                 </dragDropLibrary:DragSource.Ghost>

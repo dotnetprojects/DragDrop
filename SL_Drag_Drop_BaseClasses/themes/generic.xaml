@@ -85,19 +85,19 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="dragDropLibrary:DropTarget">
-                    <Grid x:Name="MainControlHost"
+                    <Grid x:Name="PART_MainControlHost"
                           HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalAlignment}">
                         <!-- The content ghost when nothing has been dropped -->
-                        <Grid x:Name="GhostContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        <Grid x:Name="PART_GhostContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
 
-                        <Grid x:Name="MainContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        <Grid x:Name="PART_MainContentControl" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                               />
 
                         <!-- The bounding box when a dragsource is hovering over the target -->
-                        <Border x:Name="BoundingBorder" CornerRadius="{TemplateBinding DropBorderCornerRadius}"
+                        <Border x:Name="PART_BoundingBorder" CornerRadius="{TemplateBinding DropBorderCornerRadius}"
                                 Background="Transparent" Opacity="0"
                                 BorderThickness="{TemplateBinding DropBorderThickness}"
                                 Padding="1" IsHitTestVisible="False"
