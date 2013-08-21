@@ -64,7 +64,11 @@ namespace DragDropLibrary
             /// <summary>
             /// Dragsource will return when dropped
             /// </summary>
-            ReturnDragSource
+            ReturnDragSource,
+            /// <summary>
+            /// Dragsource will return when dropped
+            /// </summary>
+            ReturnDragSourceWithoutAnimation,
         }
 
         /// <summary>
@@ -512,7 +516,7 @@ namespace DragDropLibrary
 
                     if (dropTarget != null)
                     {
-                        // put back on the correct parent
+                        //// put back on the correct parent
                         DummyOverlay.Children.Remove(this);
                         OriginalParent.Children.Add(this);
 
@@ -521,21 +525,24 @@ namespace DragDropLibrary
                             // trigger internal dragsourcedropped event to drop the dragsource
                             // (after the animations etc, so after the drop has been executed, 
                             // the external DragSourceDropped event will be triggered)
-                            dropTarget.TriggerInternalDragSourceDropped(this);
+                            dropTarget.TriggerInternalDragSourceDropped(this);                            
                         }
-                        else if (DropMode == DropModeType.ReturnDragSource)
+                        else if (DropMode == DropModeType.ReturnDragSource || DropMode == DropModeType.ReturnDragSourceWithoutAnimation)
                         {
                             // return dragsource to original parent
-                            ReturnToOriginalPosition();
+                            ReturnToOriginalPosition(DropMode == DropModeType.ReturnDragSourceWithoutAnimation);
 
                             // trigger public event in droptarget (for external use)
                             dropTarget.TriggerDragSourceDropped(this);
                         }
 
-                        // remove canvas
+                        //// remove canvas
                         InitialValues.ContainingLayoutPanel.Children.Remove(DummyOverlay);
                     }
-
+                    else
+                    {
+                        ReturnToOriginalPosition();
+                    }
                 }
                 else
                 {
@@ -640,7 +647,7 @@ namespace DragDropLibrary
                 foreach (var item in InternalDropTargets)
                 {
                     // get the absolute position of this droptarget 
-                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(pt);
+                    Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
                     // check its bounds against my absolute position
                     if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + item.ActualWidth)
@@ -678,9 +685,9 @@ namespace DragDropLibrary
         /// <summary>
         /// Returns the dragged element to its original position
         /// </summary>
-        internal void ReturnToOriginalPosition()
+        internal void ReturnToOriginalPosition(bool withoutAnimation = false)
         {
-            if (ShowReturnToOriginalPositionAnimation)
+            if (!withoutAnimation && ShowReturnToOriginalPositionAnimation)
             {
                 Storyboard sb = Animation.ReturnDragToOriginalPosition(MainDraggableControl, currentCanvasPosition, new Point(0, 0), ReturnAnimationDuration);
 

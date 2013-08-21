@@ -10,7 +10,7 @@
             <Rectangle Fill="Green" Width="100" Height="100" />
         </dragDropLibrary:DropTarget >
        
-            <dragDropLibrary:DragSource AllDropTargetsValid="True">
+            <dragDropLibrary:DragSource DropMode="ReturnDragSourceWithoutAnimation" AllDropTargetsValid="True">
                 <dragDropLibrary:DragSource.Ghost>
                     <slDragDrop:DragSourceGhost />
                 </dragDropLibrary:DragSource.Ghost>
