@@ -691,6 +691,7 @@ namespace DragDropLibrary
                     =>
                     {
                         sb.Completed -= handler;
+                        sb.Stop();
                         ResetMyPosition();
                     };
 
@@ -714,6 +715,8 @@ namespace DragDropLibrary
                 currentCanvasPosition.X = Canvas.GetLeft(this.MainDraggableControl) + position.X - this.lastDragPosition.X;
                 currentCanvasPosition.Y = Canvas.GetTop(this.MainDraggableControl) + position.Y - this.lastDragPosition.Y;
 
+                Debug.WriteLine(MainDraggableControl);
+                Debug.WriteLine(currentCanvasPosition.Y);
                 // Move the panel
                 Canvas.SetLeft(this.MainDraggableControl, currentCanvasPosition.X);
                 Canvas.SetTop(this.MainDraggableControl, currentCanvasPosition.Y);

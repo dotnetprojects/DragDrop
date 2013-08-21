@@ -484,7 +484,7 @@ namespace DragDropLibrary
                 if (currentChild != args.DragSource)
                 {
                     // is the new childs' parent (parent of parent of parent) a droptarget?
-                    Panel firstParent = (Panel)VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(args.DragSource));
+                    Panel firstParent = VisualTreeHelper.GetParent(VisualTreeHelper.GetParent(args.DragSource)) as Panel;
 
                     if (firstParent != null)
                     {
@@ -542,6 +542,7 @@ namespace DragDropLibrary
                                     handler = (send, arg) =>
                                     {
                                         sb.Completed -= handler;
+                                        sb.Stop();
                                         currentDragSourceChild.ResetMyPosition();
                                         // trigger external dragsourcedropped-event
                                         TriggerDragSourceDropped(args.DragSource);

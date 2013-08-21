@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL_Drag_Drop", "SL_Drag_Drop\SL_Drag_Drop.csproj", "{174CDB61-98A1-4771-9178-7A44A4674BB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SL_Example", "SL_Drag_Drop\SL_Example.csproj", "{174CDB61-98A1-4771-9178-7A44A4674BB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragDropLibrary_SL", "SL_Drag_Drop_BaseClasses\DragDropLibrary_SL.csproj", "{912977D5-0889-4433-9C63-A37B01411EBC}"
 EndProject

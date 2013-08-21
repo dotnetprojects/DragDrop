@@ -68,6 +68,12 @@ namespace SL_Drag_Drop
             grdWrapper.Children.Add(new sucDragDrop4());
         }
 
+        private void btnExample5_Click(object sender, RoutedEventArgs e)
+        {
+            grdWrapper.Children.Clear();
+            grdWrapper.Children.Add(new sucDragDrop5());
+        }
+
 
 
 
