@@ -6,7 +6,10 @@
     mc:Ignorable="d" x:Class="SL_Drag_Drop.sucDragDrop5"
     d:DesignWidth="599" d:DesignHeight="283" >
     <Grid x:Name="LayoutRoot">
-        <dragDropLibrary:DropTarget Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.RenderTransform>
+            <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+        </Grid.RenderTransform>
+        <dragDropLibrary:DropTarget Margin="400,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Rectangle Fill="Green" Width="100" Height="100" />
         </dragDropLibrary:DropTarget >
        

@@ -81,6 +81,8 @@ namespace DragDropLibrary
         /// </summary>
         private bool isInDropTarget = false;
 
+        private ScaleTransform combinedScaleTransform;
+
 
         /// <summary>
         /// Stores the last drag position.
@@ -92,7 +94,7 @@ namespace DragDropLibrary
         /// </summary>
         private Point currentCanvasPosition;
 
-        
+
         #region DraggingEnabled (DependencyProperty)
 
         /// <summary>
@@ -152,7 +154,7 @@ namespace DragDropLibrary
               new PropertyMetadata(Visibility.Visible));
 
         #endregion
-        
+
 
         #region ShowReturnToOriginalPositionAnimation (DependencyProperty)
 
@@ -254,8 +256,8 @@ namespace DragDropLibrary
               new PropertyMetadata(null));
 
         #endregion
-        
-        
+
+
         #region AllDropTargetsValid (DependencyProperty)
 
         /// <summary>
@@ -276,7 +278,7 @@ namespace DragDropLibrary
               new PropertyMetadata(false));
 
         #endregion
-        
+
 
         #region DragHandleMode (DependencyProperty)
 
@@ -298,7 +300,7 @@ namespace DragDropLibrary
               new PropertyMetadata(DragHandleModeType.Handle));
 
         #endregion
-        
+
 
         #region DropMode (DependencyProperty)
 
@@ -400,7 +402,7 @@ namespace DragDropLibrary
 #if !SILVERLIGHT
         static DragSource()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DragSource), new FrameworkPropertyMetadata(typeof(DragSource)));            
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DragSource), new FrameworkPropertyMetadata(typeof(DragSource)));
         }
 #endif
 
@@ -525,7 +527,7 @@ namespace DragDropLibrary
                             // trigger internal dragsourcedropped event to drop the dragsource
                             // (after the animations etc, so after the drop has been executed, 
                             // the external DragSourceDropped event will be triggered)
-                            dropTarget.TriggerInternalDragSourceDropped(this);                            
+                            dropTarget.TriggerInternalDragSourceDropped(this);
                         }
                         else if (DropMode == DropModeType.ReturnDragSource || DropMode == DropModeType.ReturnDragSourceWithoutAnimation)
                         {
@@ -590,7 +592,7 @@ namespace DragDropLibrary
             DummyOverlay.Background = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             DummyOverlay.IsHitTestVisible = false;
             InitialValues.ContainingLayoutPanel.Children.Add(DummyOverlay);
-            
+
             // save datacontext!
             object currentDC = this.DataContext;
 
@@ -607,7 +609,7 @@ namespace DragDropLibrary
             DummyOverlay.Children.Add(this);
 
             // start animation
-            Storyboard sb = Animation.ReturnDragToOriginalPosition(MainDraggableControl, new Point(0,0),p, SwitchAnimationDuration);
+            Storyboard sb = Animation.ReturnDragToOriginalPosition(MainDraggableControl, new Point(0, 0), p, SwitchAnimationDuration);
             return sb;
         }
 
@@ -691,7 +693,7 @@ namespace DragDropLibrary
             {
                 Storyboard sb = Animation.ReturnDragToOriginalPosition(MainDraggableControl, currentCanvasPosition, new Point(0, 0), ReturnAnimationDuration);
 
-                
+
 
                 EventHandler handler = null;
                 handler = (send, args)
@@ -731,7 +733,7 @@ namespace DragDropLibrary
                 // if the absolute position of the draggable element is inside of one of 
                 // the droptargets applying, fire the correct events
 
-                CheckIfIAmInDropTarget(e.GetPosition(this.MainDraggableControl));                 
+                CheckIfIAmInDropTarget(e.GetPosition(this.MainDraggableControl));
 
                 // Fire the drag moved event
                 if (this.DragMoved != null)
@@ -779,13 +781,13 @@ namespace DragDropLibrary
                     {
                         item.RecalculatePosition();
                     }
-                    
+
                     // check its bounds against my absolute position
 
-                    if (offsetMine.X > item.internalOffset.X && offsetMine.X < item.internalOffset.X + item.ActualWidth)
+                    if (offsetMine.X > item.internalOffset.X && offsetMine.X < item.internalOffset.X + (item.ActualWidth * combinedScaleTransform.ScaleX))
                     {
                         // X-coordinates are ok
-                        if (offsetMine.Y > item.internalOffset.Y && offsetMine.Y < item.internalOffset.Y + item.ActualHeight)
+                        if (offsetMine.Y > item.internalOffset.Y && offsetMine.Y < item.internalOffset.Y + (item.ActualHeight * combinedScaleTransform.ScaleY))
                         {
                             // Y-coordinates are ok
                             // fire event on droptarget
@@ -867,10 +869,12 @@ namespace DragDropLibrary
         }
 
         void DragBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {            
+        {
             if (this.DraggingEnabled && !this.dragging)
             {
                 e.Handled = true;
+
+                combinedScaleTransform = this.GetCombinedScaleTransform();
 
                 this.lastDragPosition = e.GetPosition(sender as UIElement);
 
@@ -1016,7 +1020,7 @@ namespace DragDropLibrary
                 GhostContentControl = null;
                 DummyOverlay = null;
                 OriginalParent = null;
-                
+
                 if (DragHandleMode == DragHandleModeType.Handle)
                 {
                     if (DragBar != null)
@@ -1033,7 +1037,7 @@ namespace DragDropLibrary
                     this.MouseLeftButtonUp += new MouseButtonEventHandler(DragBar_MouseLeftButtonUp);
                 }
 
-                if( MainContentPresenter != null) MainContentPresenter.SizeChanged -= new SizeChangedEventHandler(MainContentPresenter_SizeChanged);
+                if (MainContentPresenter != null) MainContentPresenter.SizeChanged -= new SizeChangedEventHandler(MainContentPresenter_SizeChanged);
 
 
                 DragBar = null;
@@ -1047,6 +1051,6 @@ namespace DragDropLibrary
 
         #endregion
 
-        
+
     }
 }
