@@ -5,7 +5,7 @@
     <version>$version$</version>
     <authors>DotNetProjects</authors>
     <owners>DotNetProjects</owners>
-    <licenseUrl></licenseUrl>
+    <licenseUrl>https://opensource.org/licenses/MS-PL</licenseUrl>
     <projectUrl>https://github.com/dotnetprojects/DragDrop</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 	<description>DragDrop</description>
