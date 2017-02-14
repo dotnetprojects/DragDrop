@@ -895,7 +895,8 @@ namespace DragDropLibrary
 
                 if (AllDropTargetsValid)
                 {
-                    var dropTargets = GetChildsRecursive(UIHelpers.RootUI).OfType<DropTarget>().ToList();
+                    var a = GetChildsOrderedRecursive(UIHelpers.RootUI);
+                    var dropTargets = GetChildsOrderedRecursive(UIHelpers.RootUI).OfType<DropTarget>().ToList();
                     this.InternalDropTargets = dropTargets;
                 }
 
@@ -946,13 +947,39 @@ namespace DragDropLibrary
         }
 
         // Find all UIElements recursively of a specific type
-        private static IEnumerable<DependencyObject> GetChildsRecursive(DependencyObject root)
-        {
-            var elts = new List<DependencyObject> { root };
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
-                elts.AddRange(GetChildsRecursive(VisualTreeHelper.GetChild(root, i)));
+        //private static IEnumerable<DependencyObject> GetChildsRecursive(DependencyObject root)
+        //{
+        //    var elts = new List<DependencyObject> { root };
+        //    for (int i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+        //        elts.AddRange(GetChildsRecursive(VisualTreeHelper.GetChild(root, i)));
 
-            return elts;
+        //    return elts;
+        //}
+
+        // Find all UIElements recursively of a specific type
+        private static IEnumerable<DependencyObject> GetChilds(DependencyObject root)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(root); i++)
+                yield return VisualTreeHelper.GetChild(root, i);
+        }
+
+        // Find all UIElements recursively and Order by Deepest in Tree,
+        private static IEnumerable<DependencyObject> GetChildsOrderedRecursive(DependencyObject root)
+        {
+            var childs = GetChilds(root).Reverse();
+
+            if (root is Canvas)
+                childs = childs.OrderByDescending(x => Canvas.GetZIndex((UIElement)x));
+
+            foreach (var dependencyObject in childs)
+            {
+                foreach (var chld in GetChildsOrderedRecursive(dependencyObject))
+                {
+                    yield return chld;
+                }
+            }
+
+            yield return root;
         }
 
         /// <summary>
