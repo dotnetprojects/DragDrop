@@ -30,7 +30,7 @@ namespace SL_Drag_Drop
             DropTarget dropTarget1 = new DropTarget() { Ghost = new DropTargetGhost() };
             DropTarget dropTarget2 = new DropTarget() { Ghost = new DropTargetGhost() };
             DropTarget dropTarget3 = new DropTarget() { Ghost = new DropTargetGhost() };
-            DropTarget dropTarget4 = new DropTarget() { Ghost = new DropTargetGhost() };
+            DropTarget dropTarget4 = new DropTarget() { Ghost = new DropTargetGhost(), Name = "a"};
             DropTarget dropTarget5 = new DropTarget() { Ghost = new DropTargetGhost() };
             DropTarget dropTarget6 = new DropTarget() { Ghost = new DropTargetGhost() };
 

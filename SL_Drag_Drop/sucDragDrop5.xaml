@@ -7,16 +7,19 @@
     d:DesignWidth="599" d:DesignHeight="283" >
     <Grid x:Name="LayoutRoot">
         <Grid.RenderTransform>
-            <ScaleTransform ScaleX="0.5" ScaleY="0.5"></ScaleTransform>
+            <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
         </Grid.RenderTransform>
-        <dragDropLibrary:DropTarget GhostVisibility="Visible" Margin="246,360,0,-177" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <dragDropLibrary:DropTarget GhostVisibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20,20,0,0">
             <dragDropLibrary:DropTarget.Ghost>
                 <Rectangle Fill="Red" Width="100" Height="100"></Rectangle>
             </dragDropLibrary:DropTarget.Ghost>
             <Rectangle Fill="Green" Width="100" Height="100" />
+            <dragDropLibrary:DropTarget.RenderTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
+            </dragDropLibrary:DropTarget.RenderTransform>
         </dragDropLibrary:DropTarget >
 
-        <dragDropLibrary:DragSource Width="100" Height="100" DropMode="ReturnDragSourceWithoutAnimation" AllDropTargetsValid="True" Margin="596,344,-97,-161">
+        <dragDropLibrary:DragSource Width="100" Height="100" DropMode="ReturnDragSourceWithoutAnimation" AllDropTargetsValid="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="320,40,0,0">
                 <dragDropLibrary:DragSource.Ghost>
                     <slDragDrop:DragSourceGhost />
                 </dragDropLibrary:DragSource.Ghost>

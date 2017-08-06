@@ -81,7 +81,7 @@ namespace DragDropLibrary
         /// </summary>
         private bool isInDropTarget = false;
 
-        private ScaleTransform combinedScaleTransform;
+        //private ScaleTransform combinedScaleTransform;
 
 
         /// <summary>
@@ -766,6 +766,8 @@ namespace DragDropLibrary
 
                 foreach (var item in InternalDropTargets)
                 {
+                    var itemCombinedScaleTransform = item.GetCombinedScaleTransform();
+
                     // get the absolute position of this droptarget 
                     //Point offsetDrop;
 
@@ -784,10 +786,10 @@ namespace DragDropLibrary
 
                     // check its bounds against my absolute position
 
-                    if (offsetMine.X > item.internalOffset.X && offsetMine.X < item.internalOffset.X + (item.ActualWidth * combinedScaleTransform.ScaleX))
+                    if (offsetMine.X > item.internalOffset.X && offsetMine.X < item.internalOffset.X + (item.ActualWidth * itemCombinedScaleTransform.ScaleX))
                     {
                         // X-coordinates are ok
-                        if (offsetMine.Y > item.internalOffset.Y && offsetMine.Y < item.internalOffset.Y + (item.ActualHeight * combinedScaleTransform.ScaleY))
+                        if (offsetMine.Y > item.internalOffset.Y && offsetMine.Y < item.internalOffset.Y + (item.ActualHeight * itemCombinedScaleTransform.ScaleY))
                         {
                             // Y-coordinates are ok
                             // fire event on droptarget
@@ -876,7 +878,7 @@ namespace DragDropLibrary
             {
                 e.Handled = true;
 
-                combinedScaleTransform = this.GetCombinedScaleTransform();
+                //combinedScaleTransform = this.GetCombinedScaleTransform();
 
                 this.lastDragPosition = e.GetPosition(sender as UIElement);
 
@@ -897,7 +899,6 @@ namespace DragDropLibrary
 
                 if (AllDropTargetsValid)
                 {
-                    var a = GetChildsOrderedRecursive(UIHelpers.RootUI);
                     var dropTargets = GetChildsOrderedRecursive(UIHelpers.RootUI).OfType<DropTarget>().ToList();
                     this.InternalDropTargets = dropTargets;
                 }

@@ -19,6 +19,9 @@
 
         <StackPanel x:Name="PanelDropTargets" Orientation="Vertical" HorizontalAlignment="Center"
                            Grid.Row="1" Grid.Column="0">
+            <StackPanel.RenderTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
+            </StackPanel.RenderTransform>
         </StackPanel>
 
 
