@@ -826,15 +826,17 @@ namespace DragDropLibrary
                 {
                     foreach (var item in DropTargets)
                     {
+                        var itemCombinedScaleTransform = item.GetCombinedScaleTransform();
+
                         // get the absolute position of this droptarget 
                         Point offsetDrop = item.TransformToVisual(UIHelpers.RootUI).Transform(new Point(0, 0));
 
                         // check its bounds against my absolute position
 
-                        if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + item.ActualWidth)
+                        if (offsetMine.X > offsetDrop.X && offsetMine.X < offsetDrop.X + (item.ActualWidth * itemCombinedScaleTransform.ScaleX))
                         {
                             // X-coordinates are ok
-                            if (offsetMine.Y > offsetDrop.Y && offsetMine.Y < offsetDrop.Y + item.ActualHeight)
+                            if (offsetMine.Y > offsetDrop.Y && offsetMine.Y < offsetDrop.Y + (item.ActualHeight * itemCombinedScaleTransform.ScaleY))
                             {
                                 // Y-coordinates are ok
                                 // fire event on droptarget
